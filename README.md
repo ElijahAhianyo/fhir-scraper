@@ -7,6 +7,8 @@ A scrapping tool built in python to scrape FHIR health-care service categories
 
 ![image](./.github/fhir_service_category.png)
 
+>
+>
 
 ![image](./.github/fhir_service_type.png)
 
