@@ -5,7 +5,7 @@ A scrapping tool built in python to scrape FHIR health-care service categories
 > so i built a very simple scrapping tool to achieve that.
 > we realized value services and types of resources on FHIR had the same format and page style (including tags) if you observe
 
-![image](./.github/fhir_service_category.png)
+![image](./.github/fhir_service_category.png =400x200)
 
 >
 >
