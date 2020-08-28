@@ -7,13 +7,12 @@ import sys
 
 
 
-# url = 'https://www.hl7.org/fhir/valueset-c80-practice-codes.html'
 def main():
     try:
         file_path,url = execute_command_line() #get arguments(file path and url) from command line
         page = requests.get(url) 
         soup = BeautifulSoup(page.content,'html.parser')
-        results = soup.find(class_='none') 
+        results = soup.find(class_='codes') 
         rows = results.find_all('tr')
         categories = []
         category_row = []
