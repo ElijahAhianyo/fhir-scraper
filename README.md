@@ -44,10 +44,10 @@ A scrapping tool built in python to scrape FHIR health-care service categories
 
 ## Demo
 
-<!-- ![](./.github/demo.webm) -->
-<video width="320" height="240" controls>
+![](./.github/demo.mp4)
+<!-- <video width="320" height="240" controls>
   <source src="./.github/demo.mp4" type="video/mp4">
-</video>
+</video> -->
 
 
 
