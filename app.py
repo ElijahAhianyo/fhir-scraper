@@ -1,33 +1,39 @@
 import requests
 from bs4 import BeautifulSoup
-import pandas as import pdb
+import pandas as pd
+from management import execute_command_line
+import sys
 
 
 
 
-url = 'https://www.hl7.org/fhir/valueset-service-category.html'
+# url = 'https://www.hl7.org/fhir/valueset-c80-practice-codes.html'
+def main():
+    try:
+        file_path,url = execute_command_line() #get arguments(file path and url) from command line
+        page = requests.get(url) 
+        soup = BeautifulSoup(page.content,'html.parser')
+        results = soup.find(class_='none') 
+        rows = results.find_all('tr')
+        categories = []
+        category_row = []
+        # extract texts from results
+        for row in rows: 
+            table_row_list = row.find_all('td') 
+            category_row = [] 
+            for table_row in table_row_list: 
+                category_row.append(table_row.text) 
+            categories.append(category_row) 
 
-page = requests.get(url) 
+        # convert results to dataframe and rite to specified file path
+        dfobj = pd.DataFrame(categories) 
 
-soup = BeautifulSoup(page.content,'html.parser')
+        dfobj.to_csv(file_path, encoding='utf-8')
 
-results = soup.find(class_='codes') 
-
-rows = results.find_all('tr')
-
-categories = []
-
-category_row = []
-
-for row in rows: 
-    table_row_list = row.find_all('td') 
-    category_row = [] 
-    for table_row in table_row_list: 
-        category_row.append(table_row.text) 
-    categories.append(category_row) 
+    except requests.exceptions.MissingSchema as exc:
+        sys.stderr.write("\nInvalid URL '{}' Did you mean 'https://{}'?.\n".format(url, url))
+        sys.exit(1)
 
 
-dfobj = pd.DataFrame(categories) 
-
-dfobj.to_csv('health_cat.csv', encoding='utf-8')
-
+if __name__ == '__main__':
+    main()
