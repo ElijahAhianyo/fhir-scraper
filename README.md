@@ -46,7 +46,7 @@ A scrapping tool built in python to scrape FHIR health-care service categories
 
 <!-- ![](./.github/demo.webm) -->
 <video width="320" height="240" controls>
-  <source src=".github/demo.webm" type="video/mp4">
+  <source src="./.github/demo.webm" type="video/webm">
 </video>
 
 
