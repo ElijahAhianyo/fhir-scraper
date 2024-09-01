@@ -8,9 +8,10 @@ def execute_command_line():
 
 
     # Add long and short argument
-    parser.add_argument("--file", "-f", help="file to write results to",type=str,required=True)
+    parser.add_argument("--filepath", "-f", help="file to write results to",type=str,required=False)
     parser.add_argument("--url","-u",help='link of page to scrape',type=str,required=True)
+    parser.add_argument("--format", help='format to save file. Defaults to csv', type=str, required=False)
 
     args = parser.parse_args()
 
-    return args.file,args.url
+    return args.filepath,args.url, args.format
