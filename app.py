@@ -37,11 +37,7 @@ def main():
                 category_row.append(table_row.text.strip())
             categories.append(category_row)
 
-            # convert results to dataframe and rite to specified file path
-            #     breakpoint()
-            save_data_to_file(categories, format, file_path)
-
-
+        save_data_to_file(categories, format, file_path)
 
     except requests.exceptions.MissingSchema as exc:
         sys.stderr.write("\nInvalid URL '{}' Did you mean 'https://{}'?.\n".format(url, url))
